@@ -1,7 +1,7 @@
 # fingerspark
 Computer vision system for gesture tracking using OpenCV
 
-![logo](https://raw.githubusercontent.com/connorgoggins/fingerspark/master/resources/logo.png)
+![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/logo.png)
 
 ==Overview==
 FingerSpark is a program that tracks a user’s hand and individual fingers in a video feed, then interprets a gesture from the movement of the user’s fingertips. The user will wear a glove with differently colored fingertips, making it easier for the camera to pinpoint the two-dimensional location of each finger. The user positions his hand 2-3 feet in front of the camera, where a video feed is recorded and interpreted by the Raspberry Pi B+’s CPU. The final product is mounted on a tripod for the user’s convenience. To detect the movement of brightly colored points at approximately 2-3 feet away from the camera, we use the Raspberry Pi Camera Module’s slow-motion video mode, which takes 90 frames/second at 640x480p of resolution.
