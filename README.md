@@ -8,16 +8,18 @@ FingerSpark is a program that tracks a user’s hand and individual fingers in a
 
 To achieve the desired functionality, we wrote an image-processing program to analyze individual frames from the camera’s video feed. We then mask each frame and perform a bitwise OR on the array of frames to create a composite mask.  We then perform image comparisons on this composite image and a series of templates, utilizing cropping techniques and an adapted form of Hooke-Jeeves’ algorithm. This optimization algorithm searches for patterns to find the template with the highest degree of similarity to the image, thereby determining which gesture the user performed.
 
-==Objectives==
+## Objectives
 Our goal in creating FingerSpark is to work towards eliminating the barriers to perfectly natural user control of electronic devices. We believe that our product will be an important next step in developing three-dimensional operating systems, creating robots that can flawlessly mimic the fine motor skills of humans, and producing interactive augmented reality technologies.
 
 Our demonstration at the end of the semester will consist of a user moving his hand in the glove with colored fingertips in front of the camera, making a gesture of his choice.  After the video is recorded, our program will process the video input and correctly select the user’s gesture from our set of templates.  Once the user’s gesture is correctly identified, our program will output what type of gesture the user made.
 
-==Masking and Color Identification==
+## Masking and Color Identification
 The core of our image-processing technique is the masking algorithm. This takes in an image (Image 1) and a set of color bounds, and returns an array composed of 1s and 0s representing which pixels are within the color bounds specified. Originally, we implemented this method using RGB encoding, but we quickly learned that better results could be obtained with HSV encoding (because it can more easily identify colors in the way humans do, and better accounts for changes in lighting). To generate Image 2, we calculated the mask between the HSV bounds of [0,0,x-10] and [255,255,x] for various values of '''x''', then took the bitwise OR of all masks generated this way. The masks can also be applied onto the original images, as shown in Image 3.
 
 {|style="margin: 0 auto;"
-| [[File:img1.png|thumb|none|alt=image 1 should be here.|This is the original template image we used to test the color masking. It's a generic color wheel, showing a good selection of the colors we may see in the future. The background was changed from white to black intentionally.]]
+| [[File:img1.png|thumb|none|alt=image 1 should be here.|
+![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/Img1.png)
+This is the original template image we used to test the color masking. It's a generic color wheel, showing a good selection of the colors we may see in the future. The background was changed from white to black intentionally.]]
 | [[File:img2.png|thumb|none|alt=image 2 should be here.|This shows the influence of value upon the color masking. As described above, each "stripe" is 10 units of value wide, and separated by 7 units. Hue and saturation are left unbounded (from 0 to 255) in this image.]]
 | [[File:img3.png|thumb|none|alt=image 3 should be here.|This is an overlay of the previous two images. Notice that each stripe does not appear to be a single uniform color to the human eye; this suggests that we need to carefully bound each parameter (hue, saturation, and value) rather than simply worrying about hue.]]
 |}
