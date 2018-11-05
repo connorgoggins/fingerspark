@@ -16,9 +16,8 @@ Our demonstration at the end of the semester will consist of a user moving his h
 ## Masking and Color Identification
 The core of our image-processing technique is the masking algorithm. This takes in an image (Image 1) and a set of color bounds, and returns an array composed of 1s and 0s representing which pixels are within the color bounds specified. Originally, we implemented this method using RGB encoding, but we quickly learned that better results could be obtained with HSV encoding (because it can more easily identify colors in the way humans do, and better accounts for changes in lighting). To generate Image 2, we calculated the mask between the HSV bounds of [0,0,x-10] and [255,255,x] for various values of '''x''', then took the bitwise OR of all masks generated this way. The masks can also be applied onto the original images, as shown in Image 3.
 
-{|style="margin: 0 auto;"
-| [[File:img1.png|thumb|none|alt=image 1 should be here.|
-![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/Img1.png)
+![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/Img1.png | width=100)
+
 This is the original template image we used to test the color masking. It's a generic color wheel, showing a good selection of the colors we may see in the future. The background was changed from white to black intentionally.]]
 | [[File:img2.png|thumb|none|alt=image 2 should be here.|This shows the influence of value upon the color masking. As described above, each "stripe" is 10 units of value wide, and separated by 7 units. Hue and saturation are left unbounded (from 0 to 255) in this image.]]
 | [[File:img3.png|thumb|none|alt=image 3 should be here.|This is an overlay of the previous two images. Notice that each stripe does not appear to be a single uniform color to the human eye; this suggests that we need to carefully bound each parameter (hue, saturation, and value) rather than simply worrying about hue.]]
