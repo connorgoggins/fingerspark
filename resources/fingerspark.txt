@@ -1,7 +1,9 @@
-# fingerspark
-Computer vision system for gesture tracking using OpenCV
+[[File:logo.png|thumb|alt=logo should be here.]]
 
-![logo](https://raw.githubusercontent.com/connorgoggins/fingerspark/master/resources/logo.png)
+== Team Members ==
+* David Battel
+* Connor Goggins
+* Kjartan Brownell (TA)
 
 ==Overview==
 FingerSpark is a program that tracks a user’s hand and individual fingers in a video feed, then interprets a gesture from the movement of the user’s fingertips. The user will wear a glove with differently colored fingertips, making it easier for the camera to pinpoint the two-dimensional location of each finger. The user positions his hand 2-3 feet in front of the camera, where a video feed is recorded and interpreted by the Raspberry Pi B+’s CPU. The final product is mounted on a tripod for the user’s convenience. To detect the movement of brightly colored points at approximately 2-3 feet away from the camera, we use the Raspberry Pi Camera Module’s slow-motion video mode, which takes 90 frames/second at 640x480p of resolution.
@@ -54,3 +56,29 @@ Another important factor that prevented us from getting better results was the e
 
 ==Further Applications==
 In its current state, FingerSpark is able to track multiple colors (several distinct colors have been tested successfully).  With more time, we would have liked to check for gestures that involve multiple fingers by simultaneously tracking multiple colors. Another improvement would have been to interpret gestures in real-time video (rather than relying on recording videos and then analyzing them). Furthermore, we would have loved to incorporate more gestures and eventually code an operating system that is controlled exclusively by a user’s gestures through FingerSpark. We also had implemented a capability for users to record their own unique gestures that would be added to the set of templates, but we never tested it enough to be comfortable enabling it at the demo (and thus it was excluded from the final code). With more time and resources, this would have been another valuable feature to include in our product.
+
+
+
+==Budget==
+* [https://www.raspberrypi.org/products/model-b-plus/ Raspberry Pi B+] - $29.95 (Will use classroom kit)
+
+* [https://www.raspberrypi.org/products/camera-module/ Raspberry Pi Camera Module] - $24.99 (Need to purchase)
+
+* [http://www.amazon.com/CAMTOA-Touchscreen-Tactical-military-Motorcycle/dp/B015J20PC6/ref=sr_1_1?ie=UTF8&qid=1455905982&sr=8-1&keywords=mens+sports+gloves/ Set of comfortable black gloves - 2 pairs]: $7.89 x 2 = $15.78 (Need to purchase)
+
+* [http://www.amazon.com/Tulip-29069-Fabric-Spray-9-Pack/dp/B00580854U/ref=sr_1_1?ie=UTF8&qid=1455908575&sr=8-1&keywords=tulip+spray+paint/ Spray Paint Set]: $15.99 (Need to purchase)
+
+* [http://www.google.com/shopping/product/5790257923932465681?lsf=seller:9119074,store:16319532146990885804&prds=oid:8794367866582351565&q=tripod+for+sale&hl=en&ei=LVvHVsmBJ4GV-wHphr_gDA/ Tripod]: $19.99 (Need to purchase)
+
+* [http://www.amazon.com/LinenTablecloth-102-Inch-Rectangular-Polyester-Tablecloth/dp/B008TL6GJG/ref=sr_1_1?ie=UTF8&qid=1455907465&sr=8-1&keywords=white+sheet/ White Backdrop]: $9.50 (Need to purchase)
+
+TOTAL: $86.25
+
+
+==Gantt Chart==
+[[File:ultimate_gantt.png|frameless|center|1200px|alt=The Gantt Chart for our project.]]
+
+
+
+[[Category:Projects]]
+[[Category:Spring 2016 Projects]]
