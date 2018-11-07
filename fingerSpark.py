@@ -1,7 +1,6 @@
 # fingerSpark.py
 # Connor Goggins
 # Working with my partner, I developed a computer vision system in Python that is capable of recognizing various user gestures.
-# Full project description available at http://classes.engineering.wustl.edu/ese205/FingerSpark
 
 def forgeMask(image,boundary):
     #boundary: 2-tuple/3-list in BGR order
