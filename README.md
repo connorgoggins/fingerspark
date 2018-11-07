@@ -36,16 +36,27 @@ Upon recording and/or loading the video file of the gesture, the mask is applied
 This shows the result of masking a single frame from the video (in this example, it is searching for red points).
 
 
-| [[File:img5.png|thumb|none|alt=image 5 should be here.|The combined masks from the entire video, generated with a series of bitwise ORs between successive frames.]]
-| [[File:img6.png|thumb|none|alt=image 6 should be here.|The area in red represents the template's initial starting position for Hooke-Jeeves' algorithm, and the initial cropping of the combined masks.]]
-|}
-{|style="margin: 0 auto;"
-| [[File:img7.png|thumb|none|alt=image 7 should be here.|This shows the best fit found when comparing the image to the horizontal template.]]
-| [[File:img8.png|thumb|none|alt=image 8 should be here.|This shows the best fit found when comparing the image to the vertical template.]]
-| [[File:img9.png|thumb|none|alt=image 9 should be here.|This shows the best fit found when comparing the image to the circular template.]]
-|}
+![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/Img5.png)
 
-==Challenges==
+The combined masks from the entire video, generated with a series of bitwise ORs between successive frames.
+
+![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/Img6.png)
+
+The area in red represents the template's initial starting position for Hooke-Jeeves' algorithm, and the initial cropping of the combined masks.
+
+![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/Img7.png)
+
+This shows the best fit found when comparing the image to the horizontal template.
+
+![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/Img8.png)
+
+This shows the best fit found when comparing the image to the vertical template.
+
+![logo](https://github.com/connorgoggins/fingerspark/blob/master/resources/Img9.png)
+
+This shows the best fit found when comparing the image to the circular template.
+
+## Challenges
 On the road to developing our final product, our group faced significant challenges.
 
 First, we did not anticipate how challenging implementing OpenCV would be.  Both the lack of documentation for this library and the issues associated with referencing the library in Python on the Raspberry Pi were problematic in the early stages of our project. However, by researching the library extensively we were able to leverage OpenCV’s methods to effectively process the video feed.
@@ -54,12 +65,12 @@ Second, we needed to find a way to compare a video feed to the static template i
 
 Our third major challenge was the time required to execute our program.  Using simple brute-force methods to compare the image with each template took nearly half an hour to return a result.  We rose to this challenge by writing a custom version of Hooke-Jeeves’ algorithm to handle our image comparisons. When this still took too much time, we reduced the search space by cropping the image and each template to similar dimensions and then applied Hooke-Jeeves’ algorithm and the comparison.  Our program currently takes under one minute to execute successfully with a high degree of accuracy.
 
-==Results==
+## Results
 Overall, our demonstration in Lopata Gallery was a success.  Our team of two accomplished the objective we set out to achieve (accurately interpreting a user's gestures from a video feed) and went one step further: we provided users with a glove that had red and blue fingertips, and we allowed users to choose whether they wanted the program to track the blue or red fingertip during their gesture.  FingerSpark successfully identified gestures in each color, and we experienced few complications during the presentation of our project to the WUSTL engineering community.  During the demonstration, we also took Professor Gonzalez's advice to heart and quickly modified our program to show the image-template comparison process for each gesture in real time on the monitor, making our project significantly more visually appealing.
 
 The key factor that prevented us from getting perfect results was the lighting in Lopata Gallery.  Although we had tested our product in Lopata Gallery previously at nighttime, the midday sun became an increasing annoyance as the demo hour progressed.  While initially FingerSpark was able to match a gesture to one specific template with ease (often returning a percentage match value for the correct template over three times the value of the highest percentage match of an incorrect template), by the end of the hour the differences in percentage match between the correct gesture and the two other gestures decreased significantly to just a few percentage points.  Despite this interference, our results still remained accurate.  However, given another few days to work on the project, we would have liked to configure FingerSpark to take an initial read of the video feed from the camera module and use that information to determine the amount of light in the frame. In particular, the optimal solution would have been to identify the white glove, see what color range it included (to see what color the lighting was), and used that information to modify the HSV range of the gesture. This would have  allowed us to eliminate the problem of variable lighting altogether.
 
-Another important factor that prevented us from getting better results was the extreme discontinuity of our fitness function. The [http://files.vlsi.uwindsor.ca/88-521/pdf/Hooke.PDF Hooke-Jeeves' algorithm] is only capable of finding a local maximum from a starting point, not an absolute maximum. However, because our fitness function was very "noisy", approximately an eighth of all points were local maxima, and the optimization algorithm was unable to find good maxima. It was impractical to check too many starting points - at that point, we're just implementing brute force methods - and for this reason, the Hooke-Jeeves algorithm was ill-suited to serving as the fitness function of FingerSpark.  Because our goal was to find the absolute best match of an image to a template, a different optimization algorithm that checked for more than a single local maxima may have been more effective.
+Another important factor that prevented us from getting better results was the extreme discontinuity of our fitness function. The [Hooke-Jeeves' algorithm](http://files.vlsi.uwindsor.ca/88-521/pdf/Hooke.PDF) is only capable of finding a local maximum from a starting point, not an absolute maximum. However, because our fitness function was very "noisy", approximately an eighth of all points were local maxima, and the optimization algorithm was unable to find good maxima. It was impractical to check too many starting points - at that point, we're just implementing brute force methods - and for this reason, the Hooke-Jeeves algorithm was ill-suited to serving as the fitness function of FingerSpark.  Because our goal was to find the absolute best match of an image to a template, a different optimization algorithm that checked for more than a single local maxima may have been more effective.
 
-==Further Applications==
+## Further Applications
 In its current state, FingerSpark is able to track multiple colors (several distinct colors have been tested successfully).  With more time, we would have liked to check for gestures that involve multiple fingers by simultaneously tracking multiple colors. Another improvement would have been to interpret gestures in real-time video (rather than relying on recording videos and then analyzing them). Furthermore, we would have loved to incorporate more gestures and eventually code an operating system that is controlled exclusively by a user’s gestures through FingerSpark. We also had implemented a capability for users to record their own unique gestures that would be added to the set of templates, but we never tested it enough to be comfortable enabling it at the demo (and thus it was excluded from the final code). With more time and resources, this would have been another valuable feature to include in our product.
